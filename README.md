@@ -335,35 +335,70 @@ Como trabajo autonomo, prueba el resto de los verbos HTTP que se mencionan en la
 
 ## 8. Preguntas de Reflexión y trabajo investigativo
 
-1. ¿Qué es el filesystem (fs) en Node.js y para qué se utiliza?
+1. ¿Qué _es el filesystem (fs) en Node.js y para qué se utiliza?
+- El filesystem (fs) es una API de Node.js que nos ayuda a leer, actualizar, borrar, renombrar y manipular archivos que se encuentran en el sistema de archivos. sus comandos basicos son `readFile`, `writeFile`, `unlink`, `rename`, `stat` y `mkdir`.
 2. ¿Qué es un middleware en Express y cuál es su propósito?
+- El middleware en express es una fucion que ejecuta un codigo el cual va antes o despues de una ruta de las api ya gestionadas. Este puede modificar, manipular, gestionar y ejeutar el codigo de la ruta.
 3. ¿Qué es un endpoint en una API RESTful y cuál es su función?
+- Un enpoint es donde las rutas de las apis pueden ser accedidas, esto puede ser utilizado como CRUD (crear, leer, actualizar y borrar), esto se utiliza para el publico o cosa que este dirigido.
 4. ¿Qué son los verbos HTTP y cuáles son los más comunes?
+- los verbos HTTP son comandos que se pueden utilizar para acceder a una api, los mas comunes son GET, POST, PUT y DELETE.
 5. ¿Qué es JSON y por qué es utilizado en las API RESTful?
+- JSON es un formato de datos que se utiliza para mandar y recibir datos en las apis, es el mas comun ya que es facil de manipulas, leer y entender, ademas de que es soportado por la mayoria de los navegadores, incluso es una fuente de comunicacion entre el frontend y backend.
 6. En lo que respecta al envio de datos a lo largo de los verbos http responde:
     - ¿Qué es el body de una petición?
+    - El cuerpo de una peticiòn es donde se encuentran los datos que seran enviados a la base de datos, estos datos son enviados en formato JSON.
     - ¿Qué es el body de una respuesta?
+    - EL cuerpo de respuesta es los datos que son recibidos de la base de datos y que seran mostrados al usuario, estos datos pueden ser mostrados en formato JSON, HTML, XML, etc.
     - ¿Qué es el query de una petición?
+    - el query es donde se incluyen parametros en la url que seran enviados a la api, estos parametros pueden ser utilizados para filtrar los datos que se van a mostrar.
     - ¿Qué es el params de una petición?
+    - el params (parametros) es donde se puede definir variables especificas que ayuden a identificar productos o rutas dinamicas.
 7. En lo que respecta al verbo POST responde:
     - ¿Qué es un verbo POST y cuál es su propósito?
+    - POST se encarga de enviar los datos al servidor donde seran procesados y almacenados en una base de datos.
     - ¿Cuándo se utiliza un verbo POST?
-    - ¿En qué se diferencia un verbo POST de los otros verbos HTTP como GET, PUT y DELETE?
+    - POST tiene dos funciones, mandar datos al servidor para crear un nuevo recurso y el otro es para manejar datos sensibles, entiendase sensibles como contraseñas, tokens, etc.
     - ¿Como se envian datos en un verbo POST?
+    - Primero hay que declarar el JSON con la URL donde se enviaran los datos para ser tratados despues se le pone una como y se empieza a realizar la peticion post asì: 
+    ```
+    json('http://localhost:3000/tasks', {
+        head: 'content-type: application/json',
+        body: JSON.stringify({
+            title: 'Comprar leche',
+            description: 'Ir al supermercado y comprar leche'
+        })
+    });
+    ```
+    - POST lo que hace es enviar datos al servidor para su procesamiento, sea crear nuevos datos o realizar acciones.
 8. En lo que respecta al verbo GET responde:
     - ¿Qué es un verbo GET y cuál es su propósito?
+    - GET lo que realiza es obtener los datos que son pedidos por el usuario y mostrarlos en el navegador.
     - ¿Cuándo se utiliza un verbo GET?
+    - GET se utiliza cuando quiero obtener datos que quiero ver como quedaron guardados o solo para informacion, no para modificar datos.
     - ¿En qué se diferencia un verbo GET de los otros verbos HTTP como POST, PUT y DELETE?
+    - GET se utiliza para obtener datos, no para modificar datos.
 9. En lo que respecta al verbo PUT responde:
     - ¿Qué es un verbo PUT y cuál es su propósito?
+    PUT es un verbo de modificaciòn de datos exitentes, lo que hace es enviar datos al servidor y buscar los que desean ser modificados con la informacion enviada.
     - ¿Cuándo se utiliza un verbo PUT?
+    Put se utiliza especialmente para modificar datos que ya existen en el servidor.
     - ¿En qué se diferencia un verbo PUT de los otros verbos HTTP como POST, GET y DELETE?
+    - PUT se utiliza para modificar datos que ya existen en el servidor.
 10. En lo que respecta al verbo DELETE responde:
-    - ¿Qué es un verbo DELETE y cuál es su propósito?
+    - ¿Qué es un verbo DELETE y cuál es su propósito? 
+    - DELETE es la forma de eliminar datos del servidor, se busca informacion en el servidor y la elimina.
     - ¿Cuándo se utiliza un verbo DELETE?
+    - Cuando se quiere eliminar datos del servidor.
     - ¿En qué se diferencia un verbo DELETE de los otros verbos HTTP como POST, GET y PUT?
+    - Cada verbo tiene su funcion, delete es la forma de eliminar datos del servidor.
 11. ¿Qué es un status code y cuáles son los más comunes?
+- Un status code son codigos de 3 digitos que entrega HTTP para indicar la respuesta del servidor sobre la solicitud realizada, Los codigos mas comunes son: 200 Que es OK, 201 Que es Creado, 204 Que es Sin contenido, 400 Que es Error, 401 Que es No autorizado, 404 Que es No encontrado, 500 Que es Error interno.
 12. ¿Cuales son los status code mas comunes para el verbo POST?
+- 201 Que es Creado, 204 Sin contenido, 400 es Error de entendimiento o malformacion, 401 No autorizado para realizar la accion, 404 No encontrado, 500Error interno.
 13. ¿Cuales son los status code mas comunes para el verbo GET?
+- 200, 201, 304, 400, 401, 404, 500, 503 Este ultimo es que el servidor no esta disponible para el momento.
 14. ¿Cuales son los status code mas comunes para el verbo PUT?
+- 200, 201, 304, 400, 401, 404, 500, 503 y 409 el cual es que no se puede modificar el dato ya que contiene informacion que no se puede modificar o qeu generan conflictos
 15. ¿Cuales son los status code mas comunes para el verbo DELETE?
+- Para este verbo se usan los status code 200, 201, 204, 400, 401, 404, 500, 503 y 409 que son los mas comunes.
